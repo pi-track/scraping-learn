@@ -3,15 +3,16 @@ require 'pry'
 require 'open-uri'
 
 def create_curriculum_hash
-  html = open('https://learn.co/tracks/full-stack-web-development-v3/object-oriented-ruby/scraping/kickstarter-scraping-lab')
-  binding.pry
-
+  html = File.read('./fixtures/Learn.html')
   learn = Nokogiri::HTML(html)
+
+  binding.pry
 
   lessons = {}
 
   #Iterate through the projects
-  kickstarter.css("li.project.grid_4").each do |project|
+=begin
+  lessons.css("li.project.grid_4").each do |project|
     title = project.css("h2.bbcard_name strong a").text
     projects[title.to_sym] = {
       :image_link => project.css("div.project-thumbnail a img").attribute("src").value,
@@ -21,6 +22,9 @@ def create_curriculum_hash
     }
   end
   projects
+=end
 end
 
-create_curriculum_hash
+#create_curriculum_hash
+
+##js--region-track-nav > div > div > span > div
